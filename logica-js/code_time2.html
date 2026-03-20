@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora de codar 02</title>
+
+    <script>
+        function compararNumeros() {
+            var numUm = Number(document.getElementById("numUm").value);
+            var numDois = Number(document.getElementById("numDois").value);
+            
+            if (isNaN(numUm) || isNaN(numDois)){
+                alert("digite um numero Válido")
+            }
+
+
+            if (numUm > numDois) {
+                alert("O maior numero é: " + numUm);
+            } else if (numUm == numDois) {
+                alert("Ambos os numeros são iguais");
+            } else {
+                alert("O maior numero é: " + numDois);
+            }
+        }
+    </script>
+</head>
+<body>
+    <main>
+        <h1>Hora de Codar 2: A Vingança do Coder</h1>
+        <section class="cards">
+            <h3>Escreva um programa em que o usuário informe dois números. Então escreva em tela o maior deles.</h3>
+            <label for="numUm">Primeiro número:</label>
+            <input type="number" id="numUm" placeholder="Digite o primeiro número"><br> 
+            <label for="numDois">Segundo número:</label>
+            <input type="number" id="numDois" placeholder="Digite o segundo número">
+            <button onclick="compararNumeros()">Comparar</button>
+            <hr>
+        </section>
+    </main>
+
+    
+</body>
+</html>
