@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora de codar 01!</title>
+ 
+    <script>
+        alert ("Vamos Codar?");
+ 
+        var nome_do_carro = "Fusca";
+ 
+        function definir(){
+            userName = prompt("Seu nome");
+            userAge = prompt("Sua idade");
+        }
+ 
+        function exibirDados() {
+            alert("Seu nome é: " + userName + "\nSua idade é: " + userAge);
+        }
+ 
+        function retangulo() {
+            var base = prompt("Digite a base do retangulo: ");
+            var altura = prompt("Agora as altura: ");
+            var area = (base * altura);
+            alert("A Area do retangulo é: " + area );
+ 
+        }
+        function quadrado() {
+            var lados = prompt("Qual o valor do lado do quadrado? ");
+            var area = (lados * lados);
+            alert("A Area do quadrado é: " + area );
+        }
+        function losango() {
+            var diagonalMaior = prompt("Digite a diagonal maior do losango: ");
+            var diagonalMenor = prompt("Digite a diagonal menor do losango: ");
+            var area = (diagonalMaior * diagonalMenor) / 2;
+            alert("A Area do losango é: " + area );
+        }
+        function trapezio() {
+            var baseMaior = prompt("Digite a base maior do trapézio: ");
+            var baseMenor = prompt("Digite a base menor do trapézio: ");
+            var altura = prompt("Digite a altura do trapézio: ");
+            var area = ((baseMaior + baseMenor) * altura) / 2;
+            alert("A Area do trapézio é: " + area );
+        }
+        function paralelogramo() {
+            var base = prompt("Digite a base do paralelogramo: ");
+            var altura = prompt("Digite a altura do paralelogramo: ");
+            var area = (base * altura);
+            alert("A Area do paralelogramo é: " + area );
+        }
+        function triangulo() {
+            var base = prompt("Digite a base do triangulo: ");
+            var altura = prompt("Digite a altura do triangulo: ");
+            var area = (base * altura) / 2;
+            alert("A Area do triangulo é: " + area );
+        }
+        function circulo() {
+            var raio = prompt("Digite o raio do círculo: ");
+            var area = Math.PI * raio * raio;
+            alert("A Area do círculo é: " + area );
+        }
+ 
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Alguns exercicios pra aquecer!</h1>
+    </header>
+    <main>
+ 
+        <h2>Descubra o carro, clica ai!</h2>
+        <button onclick=alert(nome_do_carro)>Um carrão!</button>  
+        
+        <Hr>
+        <h2>Quem é você?</h2>
+        <form onsubmit="alert(document.getElementById('name').value); return false;">
+            <label for="name">Seu nome</label>
+            <input type="text" id="name">
+            <button type="submit">Enviar</button>
+        </form>
+        
+        <Hr>
+        <h2>Exibição de identidade!</h2>
+        <p>Ao clicar em "Começar" uma janela aparecerá na sua tela, digite corretamente nome e idade e depois clique em "exibir".</p>
+        <button onclick="definir()">Começe aqui</button>
+        <button onclick="exibirDados()">Exibir</button>
+
+        <Hr>
+        <h2>Descubra as Areas das figuras geometricas!</h2>
+        <button onclick="retangulo()">Retangulo</button>
+        <button onclick="quadrado()">Quadrado</button>
+        <button onclick="losango()">Losango</button>
+        <button onclick="trapezio()">Trapézio</button>
+        <button onclick="paralelogramo()">Paralelogramo</button>
+        <button onclick="triangulo()">Triangulo</button>
+        <button onclick="circulo()">Circulo</button>
+    </main>
+   
+</body>
+</html>
