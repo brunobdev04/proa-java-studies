@@ -23,6 +23,19 @@
                 alert("O maior numero é: " + numDois);
             }
         }
+
+        function descreverNumero() {
+            var resultado = document.getElementById("resultado");
+            var numero = Number(document.getElementById("numero").value);
+            if (numero > 0 ) {
+                resultado.textContent = "O numero: " + numero + " é Positivo!";
+            } else if (numero < 0) {
+                resultado.textContent = "O numero: " + numero + " é Negativo!";
+            } else {
+                resultado.textContent = "O numero seu numero é: Zero!";
+            }
+        }
+
     </script>
 </head>
 <body>
@@ -36,6 +49,16 @@
             <input type="number" id="numDois" placeholder="Digite o segundo número">
             <button onclick="compararNumeros()">Comparar</button>
             <hr>
+
+            <h3> Faça um programa que leia um valor informado pelo usuário e diga se o valor informado é positivo, negativo ou zero.</h3>
+            <label for="numero">Digite um numero</label>
+            <input type="number" id="numero" placeholder="ex: 9">
+            <button onclick="descreverNumero()">Descobrir</button>
+            <p id="resultado">O numero digitado é: </p>
+            <hr>
+
+            
+
         </section>
     </main>
 
