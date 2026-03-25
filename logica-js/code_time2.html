@@ -36,13 +36,98 @@
             }
         }
 
+        function compararTresNumeros() {
+            var num1 = Number(document.getElementById("num1").value);    
+            var num2 = Number(document.getElementById("num2").value);
+            var num3 = Number(document.getElementById("num3").value);
+
+            if (num1 > num2 && num1 > num3) {
+                alert("O maior numero é: " + num1);
+            } else if (num2 > num1 && num2 > num3) {
+                alert("O maior numero é: " + num2);
+            } else if (num3 > num1 && num3 > num2) {
+                alert("O maior numero é: " + num3);
+            } else {
+                alert("Os numeros são iguais");
+            }
+        }
+
+        function somarNumerosMaiores() {
+            var num1 = Number(document.getElementById("num11").value);    
+            var num2 = Number(document.getElementById("num22").value);
+            var num3 = Number(document.getElementById("num33").value);
+
+            var maior1 = 0;
+            var maior2 = 0;
+
+            //se não fosse uma atividade eu usaria o math.max para encontrar os maiores numeros, mas como é uma atividade de lógica, eu fiz a comparação manualmente
+            if (num1 > num2 && num1 > num3) {
+                maior1 = num1;
+                if (num2 > num3) {
+                    maior2 = num2;
+                } else {
+                    maior2 = num3;
+                }
+            } else if (num2 > num1 && num2 > num3) {
+                maior1 = num2;
+                if (num1 > num3) {
+                    maior2 = num1;
+                } else {
+                    maior2 = num3;
+                }
+            } else {
+                maior1 = num3;
+                if (num1 > num2) {
+                    maior2 = num1;
+                } else {
+                    maior2 = num2;
+                }
+            }
+
+            var soma = maior1 + maior2;
+            alert("A soma dos dois maiores numeros é: " + soma);w
+        }
+
+        function calcularMedia() {
+            var listaNumeros = [];
+
+            for (let i = 1; i <= 6; i++) {
+                var numero = prompt("Digite o " + i + "º Numero (digite N para sair)");
+                if (numero === "N" || numero === "n") {
+                    alert("Encerrando o programa.");
+                    break;
+                }
+                listaNumeros.push(Number(numero));
+            }
+
+            let soma = 0;
+            for (let i = 0 ; i <listaNumeros.length; i++){
+                soma += listaNumeros[i];
+            }
+            let media = soma / listaNumeros.length;
+            alert("Os numeros digitados foram: " + listaNumeros.join(", ") + "\nA média é: " + media);
+        }
+
+        function validarIdade() {
+            var anoNascimento = new Date(document.getElementById("idade").value).getFullYear();
+            var anoAtual = new Date().getFullYear();
+            var idade = anoAtual - anoNascimento;
+
+            if (idade >= 16) {
+                document.getElementById("resultadoIdade").textContent = "Você pode votar este ano!";
+            } else {
+                document.getElementById("resultadoIdade").textContent = "Você não pode votar este ano.";
+            }
+        }
+
+
     </script>
 </head>
 <body>
     <main>
         <h1>Hora de Codar 2: A Vingança do Coder</h1>
         <section class="cards">
-            <h3>Escreva um programa em que o usuário informe dois números. Então escreva em tela o maior deles.</h3>
+            <h3>1. Escreva um programa em que o usuário informe dois números. Então escreva em tela o maior deles.</h3>
             <label for="numUm">Primeiro número:</label>
             <input type="number" id="numUm" placeholder="Digite o primeiro número"><br> 
             <label for="numDois">Segundo número:</label>
@@ -50,14 +135,69 @@
             <button onclick="compararNumeros()">Comparar</button>
             <hr>
 
-            <h3> Faça um programa que leia um valor informado pelo usuário e diga se o valor informado é positivo, negativo ou zero.</h3>
+            <h3>2. Faça um programa que leia um valor informado pelo usuário e diga se o valor informado é positivo, negativo ou zero.</h3>
             <label for="numero">Digite um numero</label>
             <input type="number" id="numero" placeholder="ex: 9">
             <button onclick="descreverNumero()">Descobrir</button>
             <p id="resultado">O numero digitado é: </p>
             <hr>
 
-            
+            <h3>3.Faça um programa para ler 3 valores (considere que não serão informados valores iguais) e escrever o maior deles.</h3>
+            <label for="num1">Digite o primeiro valor</label>
+            <input type="number" id="num1" placeholder="ex: 9"><br>
+            <label for="num2">Digite o segundo valor</label>
+            <input type="number" id="num2" placeholder="ex: 9"><br>
+            <label for="num3">Digite o terceiro valor</label>
+            <input type="number" id="num3" placeholder="ex: 9"><br>
+            <button onclick="compararTresNumeros()">Comparar</button>
+            <hr>
+
+            <h3>4. Faça um programa que leia 3 valores informados pelo usuário
+            <br> (considere que não serão informados valores iguais) e escrever a soma dos 2 maiores.</h3>
+            <label for="num1">Digite o primeiro valor</label>
+            <input type="number" id="num11" placeholder="ex: 9"><br>
+            <label for="num2">Digite o segundo valor</label>
+            <input type="number" id="num22" placeholder="ex: 9"><br>
+            <label for="num3">Digite o terceiro valor</label>
+            <input type="number" id="num33" placeholder="ex: 9"><br>
+            <button onclick="somarNumerosMaiores()">Somar</button>
+            <hr>                
+
+            <h3>5. Faça um programa que leia 6 valores informados pelo usuário,
+            <br> calcule, exiba os números informados e escreva a média aritmética desses valores lidos.</h3>
+            <button onclick="calcularMedia()">Iniciar</button>
+            <hr>
+
+            <h3>6. Faça um programa que receba quatro valores informados pelo usuário, mas informe somente o primeiro,
+            <br> o último e o maior de todos eles (considere que todos os números informados serão diferentes)</h3>
+            <button onclick="primeiroUltimoMaior()">Iniciar</button>
+            <hr>
+
+
+            <h3>7. Faça um programa que leia 6 números que o usuário vai informar. Todos os números lidos com valor inferior a 72 devem ser somados.
+            <br> Escreva o valor final da soma efetuada e também todos valores que o usuário informou.</h3>
+            <button onclick="somarNumerosMenores()">Iniciar</button>
+            <hr>
+
+
+            <h3>8. Escreva um programa que calcule a média de quatro números informados pelo usuário, mas somente se esses números forem maiores que 0 e menores que 10.
+            <br> No final, se a média for maior que cinco o usuário receberá uma mensagem "Você passou no teste". Em qualquer outra situação, ele receberá uma mensagem de "tente novamente"</h3>
+            <button onclick="calcularMediaCondicional()">Iniciar</button>
+            <hr>
+
+            <h3>9. Escreva um programa para ler o ano de nascimento de uma pessoa e escrever uma mensagem que diga se ela poderá ou não votar este ano
+            <br> (não é necessário considerar o mês em que ela nasceu).</h3>
+            <label for="idade">Digite o ano de nascimento:</label>
+            <input type="date" id="idade" placeholder="">
+            <button onclick="validarIdade()">Verificar</button>
+            <h5>O resultado vai aparecer aqui:</h5>
+            <p id="resultadoIdade"></p>
+            <hr>
+
+            <h3>10. Tendo como entrada a altura e o gênero designado ao nascer (codificado da seguinte forma: 1: feminino - 2: masculino - ) de uma pessoa
+            <br> construa um programa que calcule e imprima seu peso ideal, utilizando as seguintes fórmulas.</h3>
+
+            <h3>11.</h3>
 
         </section>
     </main>
