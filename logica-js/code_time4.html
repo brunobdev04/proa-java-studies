@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora de Codar 4</title>
+    <script>
+        let estudantes = [];
+        function cadastrarEstudante() {
+            let estudanteInput = document.getElementById("estudanteInput").value;
+            if (estudanteInput.toUpperCase() === "PARE") {
+                alert("Quantidade de estudantes cadastrados: " + estudantes.length + "\nLista de estudantes: " + estudantes.join(", "));
+            } else {
+                estudantes.push(estudanteInput);
+                document.getElementById("estudanteInput").value = "";
+            }
+        }
+
+        let planetas = ["Terra", "Marte", "Plutão", "Vênus", "Júpiter", "Saturno"];
+
+
+
+
+
+
+
+        let frutas = ["Mexirica", "Bergamota", "Laranjinha", "Tangerina"]
+        const frutas_lower = frutas.map(item => item.toLowerCase());
+        function retiraFruta() {
+            let frutaInput = document.getElementById("frutaInput").value.toLowerCase();
+            let index = frutas_lower.indexOf(frutaInput);
+            if (index !== -1) {
+                frutas.splice(index, 1);
+                alert("Fruta foi retirada da lista");
+            } else {
+                alert("Fruta não encontrada na lista");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Introdução as listas e filas</h1>
+
+
+    <h3>Estudantes</h3>
+    <p>Crie um programa onde o usuário possa cadastrar estudantes sem limites, e, em seguida,<br>
+        Se o usuário digitar "PARE" o programa deve exibir a quantidade de estudantes cadastrados e a lista com cada um deles.</p>
+    
+    <p id="estudantesLista" style="display: none"> Sabao </p>
+    <input type="text" id="estudanteInput" placeholder="Digite o nome do estudante" onkeydown="if(event.key==='Enter'){cadastrarEstudante()}">
+    <button onclick="cadastrarEstudante()">Cadastrar</button>
+
+    <hr>
+
+    <h3>Planetas</h3>
+    <p>Crie uma array de planetas que inclua "Terra", "Marte", "Plutão", "Vênus", "Júpiter", "Saturno" 
+    <br> em seguida, peça ao usuário para digitar o nome de um planeta.</p>
+    <input type="text" id="planetaInput" placeholder="Digite o nome do planeta" onkeydown="if(event.key==='Enter'){verificarPlaneta()}">
+    <hr>
+
+    <h3>Compras</h3>
+    <p>Crie uma array de frutas, exiba-a ao usuário e peça ao mesmo que escreva o nome de uma das frutas.<br>
+        Se a fruta for achada retire-a e exiba a mensagem "Fruta foi retirada da lista".</p>
+        <button onclick="alert(frutas)">Consultar</button><br>
+
+    <input type="text" id="frutaInput" placeholder="Digite o nome de uma fruta">
+    <button onclick="retiraFruta()">Retirar Fruta</button>
+
+</body>
+</html>

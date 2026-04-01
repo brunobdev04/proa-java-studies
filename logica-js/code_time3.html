@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora de Codar 03</title>
+
+    <script>
+        var bombaIntervalo = null;
+
+        function obterSaida() {
+            return document.getElementById("saida");
+        }
+
+        function mostrar(texto) {
+            var saida = obterSaida();
+            if (saida) {
+                saida.textContent = texto;
+            }
+        }
+
+        function lerNumero(mensagem) {
+            var valor;
+            do {
+                var entrada = prompt(mensagem);
+                if (entrada === null) {
+                    return null;
+                }
+                valor = Number(entrada);
+            } while (Number.isNaN(valor));
+            return valor;
+        }
+
+        function exercicio1() {
+            var contador = document.getElementById("contador");
+            if (!contador) {
+                return;
+            }
+
+            if (bombaIntervalo) {
+                clearInterval(bombaIntervalo);
+            }
+
+            var bomba = 30;
+            contador.textContent = bomba;
+            mostrar("Contagem iniciada...");
+
+            bombaIntervalo = setInterval(function () {
+                bomba--;
+
+                if (bomba >= 0) {
+                    contador.textContent = bomba;
+                } else {
+                    clearInterval(bombaIntervalo);
+                    bombaIntervalo = null;
+                    contador.textContent = "EXPLOSÃO";
+                    alert("EXPLOSÃO");
+                    mostrar("Exercício 1 finalizado: EXPLOSÃO");
+                }
+            }, 1000);
+        }
+
+        function exercicio2() {
+            var primeiro = lerNumero("Digite o primeiro valor:");
+            if (primeiro === null) {
+                return;
+            }
+
+            var segundo = lerNumero("Digite o segundo valor (maior que zero):");
+            if (segundo === null) {
+                return;
+            }
+
+            while (segundo <= 0) {
+                segundo = lerNumero("Valor invalido. Digite o segundo valor (maior que zero):");
+                if (segundo === null) {
+                    return;
+                }
+            }
+
+            var resultado = primeiro / segundo;
+            mostrar("Exercício 2\nPrimeiro valor: " + primeiro + "\nSegundo valor: " + segundo + "\nDivisão: " + resultado);
+        }
+
+        function exercicio3() {
+            var lista = [];
+            for (var i = 10; i >= 1; i--) {
+                lista.push(i);
+            }
+            mostrar("Exercício 3\n" + lista.join(", "));
+        }
+
+        function exercicio4() {
+            var soma = 0;
+            var quantidade = 0;
+
+            for (var i = 15; i <= 100; i++) {
+                soma += i;
+                quantidade++;
+            }
+
+            var media = soma / quantidade;
+            mostrar("Exercício 4\nMédia entre 15 e 100: " + media);
+        }
+
+        function exercicio5() {
+            var primeiro = lerNumero("Digite o primeiro numero inteiro:");
+            if (primeiro === null) {
+                return;
+            }
+
+            var segundo = lerNumero("Digite o segundo numero inteiro (maior que o primeiro):");
+            if (segundo === null) {
+                return;
+            }
+
+            while (segundo <= primeiro) {
+                segundo = lerNumero("O segundo deve ser maior que o primeiro. Digite novamente:");
+                if (segundo === null) {
+                    return;
+                }
+            }
+
+            var soma = 0;
+            var quantidade = 0;
+            for (var i = primeiro; i <= segundo; i++) {
+                soma += i;
+                quantidade++;
+            }
+
+            var media = soma / quantidade;
+            mostrar("Exercício 5\nIntervalo: " + primeiro + " a " + segundo + "\nMédia: " + media);
+        }
+
+        function exercicio6() {
+            var aprovados = 0;
+            var continuar = "S";
+
+            while (continuar === "S") {
+                var nota1 = lerNumero("Digite a primeira nota:");
+                if (nota1 === null) {
+                    return;
+                }
+
+                var nota2 = lerNumero("Digite a segunda nota:");
+                if (nota2 === null) {
+                    return;
+                }
+
+                var media = (nota1 + nota2) / 2;
+                alert("Média final: " + media);
+
+                if (media >= 9.5) {
+                    aprovados++;
+                }
+
+                var resposta = prompt("Calcular a média de outro aluno? Sim/Não (S/N)");
+                if (resposta === null) {
+                    break;
+                }
+
+                continuar = resposta.trim().toUpperCase();
+            }
+
+            mostrar("Exercício 6\nQuantidade de alunos aprovados: " + aprovados);
+        }
+
+        function exercicio7() {
+            var soma = 0;
+
+            for (var i = 1; i <= 6; i++) {
+                var nota = lerNumero("Digite a nota " + i + " (0 a 10):");
+                if (nota === null) {
+                    return;
+                }
+
+                while (nota < 0 || nota > 10) {
+                    nota = lerNumero("Nota invalida. Digite a nota " + i + " (0 a 10):");
+                    if (nota === null) {
+                        return;
+                    }
+                }
+
+                soma += nota;
+            }
+
+            var media = soma / 6;
+            mostrar("Exercício 7\nMédia do aluno: " + media);
+        }
+
+        function exercicio8() {
+            var n = lerNumero("Digite N (maior que zero):");
+            if (n === null) {
+                return;
+            }
+
+            while (n <= 0) {
+                n = lerNumero("Valor invalido. Digite N (maior que zero):");
+                if (n === null) {
+                    return;
+                }
+            }
+
+            var lista = [];
+            for (var i = 1; i <= n; i++) {
+                lista.push(i);
+            }
+
+            mostrar("Exercício 8\n" + lista.join(", "));
+        }
+
+        function exercicio9() {
+            var lista = [];
+            for (var i = 101; i <= 110; i++) {
+                lista.push(i);
+            }
+            mostrar("Exercício 9\n" + lista.join(", "));
+        }
+
+        function exercicio10() {
+            var dentro = 0;
+            var fora = 0;
+
+            for (var i = 1; i <= 10; i++) {
+                var valor = lerNumero("Digite o valor " + i + ":");
+                if (valor === null) {
+                    return;
+                }
+
+                if (valor >= 24 && valor <= 42) {
+                    dentro++;
+                } else {
+                    fora++;
+                }
+            }
+
+            mostrar("Exercício 10\nEntre 24 e 42: " + dentro + "\nFora do intervalo: " + fora);
+        }
+
+        function exercicio11() {
+            var n = lerNumero("Digite N para gerar as tabuadas de 1 a N:");
+            if (n === null) {
+                return;
+            }
+
+            while (n <= 0) {
+                n = lerNumero("Valor invalido. Digite N (maior que zero):");
+                if (n === null) {
+                    return;
+                }
+            }
+
+            var linhas = [];
+            for (var i = 1; i <= n; i++) {
+                linhas.push("Tabuada do " + i + ":");
+                for (var j = 1; j <= 10; j++) {
+                    linhas.push(i + " x " + j + " = " + i * j);
+                }
+                linhas.push("");
+            }
+
+            mostrar("Exercício 11\n" + linhas.join("\n"));
+        }
+    </script>
+</head>
+<body>
+    <h1>Hora de Codar 03 - De volta ao Codigo!</h1>
+
+    <h3>1 - Crie uma bomba relógio (usando somente código - para deixar claro!) cuja contagem regressiva vá de 30 a 0. No final da repetição escreva "EXPLOSÃO".</h3>
+
+    <h3>2 - Escreva um algoritmo para ler 2 valores informados pelo usuário e enquanto o segundo valor informado for igual ou menor que ZERO, deve ser lido um novo valor, mas para a mesma variável. Ou seja, para o segundo valor não pode ser aceito o valor zero nem um valor negativo. O seu programa deve imprimir o resultado da divisão do primeiro valor lido pelo segundo valor e exibir o resultado ao usuário.</h3>
+
+    <h3>3 - Escreva um algoritmo para imprimir os números de 1 (inclusive) a 10 (inclusive) em ordem decrescente. Exemplo: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1.</h3>
+
+    <h3>4 - Faça um algoritmo que calcule e escreva a média aritmética dos números inteiros entre 15 (inclusive) e 100 (inclusive).</h3>
+
+    <h3>5 - Faça um algoritmo que calcule e escreva a média aritmética dos dois números inteiros informados pelo usuário e todos os números inteiros entre eles. Considere que o primeiro sempre será menor que o segundo.</h3>
+
+    <h3>6 - Escreva um programa para ler 2 notas de um aluno, calcular e imprimir a média final. Considere que a nota de aprovação é 9,5. Logo após escrever a mensagem "Calcular a média de outro aluno Sim/Não?" e solicitar um resposta. Se a resposta for "S", o programa deve ser executado novamente, caso contrário deve ser encerrado exibindo a quantidade de alunos aprovados.</h3>
+
+    <h3>7 - Escreva um algoritmo para ler as notas de avaliações de um aluno, calcule e imprima a média (simples) desse aluno. Só devem ser aceitos valores válidos durante a leitura (0 a 10) para cada nota. São 6 notas ao total. Caso o valor informado para qualquer uma das notas esteja fora do limite estabelecido, deve ser solicitado um novo valor ao usuário.</h3>
+
+    <h3>8 - Ler um valor N e imprimir todos os valores inteiros entre 1 (inclusive) e N (inclusive). Considere que o N será sempre maior que ZERO. N é um valor informado pelo usuário.</h3>
+
+    <h3>9 - Escreva um algoritmo para imprimir os 10 primeiros números inteiros maiores que 100.</h3>
+
+    <h3>10 - Escreva um programa em que o usuário informe 10 valores e escreva quantos desses valores lidos estão entre os números 24 e 42 (incluindo os valores 24 e 42) e quantos deles estão fora deste intervalo.</h3>
+
+    <h3>11 - Escreva um programa para imprimir todas as tabuadas de 1 a N. N será informado pelo usuário.</h3>
+
+    <p><strong>Contador da bomba:</strong> <span id="contador">-</span></p>
+
+    <p>
+        <button onclick="exercicio1()">Executar 1</button>
+        <button onclick="exercicio2()">Executar 2</button>
+        <button onclick="exercicio3()">Executar 3</button>
+        <button onclick="exercicio4()">Executar 4</button>
+        <button onclick="exercicio5()">Executar 5</button>
+        <button onclick="exercicio6()">Executar 6</button>
+        <button onclick="exercicio7()">Executar 7</button>
+        <button onclick="exercicio8()">Executar 8</button>
+        <button onclick="exercicio9()">Executar 9</button>
+        <button onclick="exercicio10()">Executar 10</button>
+        <button onclick="exercicio11()">Executar 11</button>
+    </p>
+
+    <pre id="saida">Resultado dos exercícios aparece aqui.</pre>
+</body>
+</html>
