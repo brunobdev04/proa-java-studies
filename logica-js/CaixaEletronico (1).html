@@ -1,0 +1,153 @@
+<html>
+
+<head>
+
+	<script>
+		var user = '';
+		var senha = 3589;
+
+		function login() {
+			user = String(prompt('Informe seu usuário:'));
+			alert("Olá " + user + " é um prazer ter você por aqui!");
+		}
+
+		login();
+
+
+		var saldo = 100.5; //Float
+
+		function validar_senha(funcaoAtual) {
+			var senhaInformada = parseInt(prompt('Informe sua senha:'));
+
+			if (senhaInformada !== senha) {
+				alert('Senha incorreta!');
+				funcaoAtual();
+				return false;
+			}
+
+			return true;
+		}
+
+		function inicio() {
+
+			var escolha = parseInt(prompt('Selecione uma opção:  1.Saldo | 2. Depósito | 3. Saque | 4. Trasferência | 5. Sair'));
+			
+			switch (escolha) {
+				case 1:
+					ver_saldo();
+					break;
+				case 2:
+					fazer_deposito();
+					break;
+				case 3:
+					fazer_saque();
+					break;
+				case 4:
+					fazer_transferencia();
+					break;
+				case 5:
+					sair();
+					break;
+				default:
+					erro();
+			}
+		}		
+
+		function ver_saldo() {
+			if (!validar_senha(ver_saldo)) {
+				return;
+			}
+
+			alert('Seu saldo atual é: ' + saldo);
+			inicio();
+		}
+
+		function fazer_deposito() {
+			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+			// Not a Number
+			if (isNaN(deposito) || deposito === '') {
+				alert('Por favor, informe um número:');
+				fazer_deposito();
+			} else if (deposito <= 0) {
+				alert('quantia invalida');
+				fazer_deposito();
+			} else {
+				saldo += deposito;
+				ver_saldo();
+			}
+		}
+
+		function fazer_saque() {
+			if (!validar_senha(fazer_saque)) {
+				return;
+			}
+
+			var saque = parseFloat(prompt('Qual o valor para saque?'));
+			if (isNaN(saque) || saque === '') {
+				alert('Por favor, informe um número:');
+				fazer_saque();
+			} else if (saque > saldo) {
+				alert('Operação não autorizada!');
+				fazer_saque();
+			} else {
+				saldo -= saque;
+				
+				ver_saldo();
+			}
+		}
+
+		function fazer_transferencia() {
+			if (!validar_senha(fazer_transferencia)) {
+				return;
+			}
+
+			var conta = prompt('Informe o número da conta para transferência:');
+			var transferencia = parseFloat(prompt('Informe o valor para transferência:'));
+
+			if (isNaN(conta) || conta === '') {
+				alert('Por favor, informe um número de conta:');
+				fazer_transferencia();
+			} else if (isNaN(transferencia) || transferencia === '') {
+				alert('Por favor, informe um número para transferência:');
+				fazer_transferencia();
+			} else if (transferencia > saldo) {
+				alert('Operação não autorizada!');
+				fazer_transferencia();
+			} else if (transferencia <= 0) {
+				alert('quantia invalida, por favor informe um valor maior que zero:');
+				fazer_transferencia();
+			} else {
+				saldo -= transferencia;
+				alert('Transferência realizada com sucesso para a conta ' + conta);
+				ver_saldo();
+			}
+		}
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 a 5');
+			inicio();
+		}
+
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+				alert('Obrigado ' + user + ', por usar nosso serviço!');
+				window.close();
+			} else {
+				inicio();
+			}
+		}
+
+
+		
+	</script>
+</head>
+
+<body>
+	<div ="container">
+		<h1>Caixa Eletrônico</h1>
+		<button onclick="inicio()">Iniciar</button>
+	</div>
+</body>
+
+</html>
