@@ -1,0 +1,52 @@
+.navbar {
+    padding: 12px 200px 0px 200px;
+    border-bottom: 1px solid #dbdbdb;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.logoMarca{
+    display: flex;
+    align-items: center;
+}
+
+.logoimg{
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+}
+
+.logo {
+    font-family: 'Billabong', cursive;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.pesquisar .shearch {
+    font-size: 14px;
+    background: #e5e5e6;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;  
+    width: 268px;
+    outline: none;
+    color: #423b3b;  
+
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-icons svg {
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.nav-icons svg:hover {
+  opacity: 0.5;
+}
