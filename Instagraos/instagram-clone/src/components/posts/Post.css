@@ -3,10 +3,8 @@
   border: 1px solid #dbdbdb;
   border-radius: 8px;
   margin-bottom: 24px;
-  margin-left: 500px;
-  margin-right: 500px;
-  padding: 20px 50px  8px;
-  margin-top: 8px   ;
+  margin-top: 8px;
+  padding: 20px 20px 20px ;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -18,14 +16,10 @@
 }
 
 .post-avatar {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: #efefef;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
+  object-fit: cover;
   flex-shrink: 0;
 }
 
@@ -52,12 +46,9 @@
 
 .post-imagem {
   width: 100%;
-  height: 400px;
-  background: #efefef;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 80px;
+  height: 650px;
+  object-fit: cover;
+  display: block;
 }
 
 .post-acoes {
@@ -116,19 +107,4 @@
 
 .post-comentar::placeholder {
   color: #8e8e8e;
-}
-
-.post-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.post-imagem {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  display: block;
 }
